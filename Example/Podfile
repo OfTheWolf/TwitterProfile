@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'TwitterProfile_Example' do
+  pod 'TwitterProfile', :path => '../'
+
+  target 'TwitterProfile_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

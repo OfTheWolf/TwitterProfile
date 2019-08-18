@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C76B9D1230986460060C09E /* TwitterProfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C76B9D0230986460060C09E /* TwitterProfile.framework */; };
+		0C76B9E723098A110060C09E /* BottomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E223098A110060C09E /* BottomPageViewController.swift */; };
+		0C76B9E823098A110060C09E /* BottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E323098A110060C09E /* BottomViewController.swift */; };
+		0C76B9E923098A110060C09E /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E423098A110060C09E /* HeaderViewController.swift */; };
+		0C76B9EA23098A110060C09E /* BottomPageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E523098A110060C09E /* BottomPageContainerViewController.swift */; };
+		0C76B9EB23098A110060C09E /* XLPagerTabStripExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E623098A110060C09E /* XLPagerTabStripExampleViewController.swift */; };
 		2DAD2D9BE4913D75B9C69ABC /* Pods_TwitterProfile_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF2ADA837315B3356FE4FC9 /* Pods_TwitterProfile_Tests.framework */; };
 		49BAEB55DF4877EDF805DB7C /* Pods_TwitterProfile_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA184AF0F0464E19C4738BF /* Pods_TwitterProfile_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -29,10 +35,17 @@
 
 /* Begin PBXFileReference section */
 		03061125A8D02E9EE9F330D5 /* Pods-TwitterProfile_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterProfile_Tests.release.xcconfig"; path = "Target Support Files/Pods-TwitterProfile_Tests/Pods-TwitterProfile_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		0C61BFE8CF64DFEE8887BCF2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		0C61BFE8CF64DFEE8887BCF2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		0C76B9CD23097E980060C09E /* TwitterProfile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TwitterProfile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C76B9D0230986460060C09E /* TwitterProfile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TwitterProfile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C76B9E223098A110060C09E /* BottomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPageViewController.swift; sourceTree = "<group>"; };
+		0C76B9E323098A110060C09E /* BottomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomViewController.swift; sourceTree = "<group>"; };
+		0C76B9E423098A110060C09E /* HeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
+		0C76B9E523098A110060C09E /* BottomPageContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPageContainerViewController.swift; sourceTree = "<group>"; };
+		0C76B9E623098A110060C09E /* XLPagerTabStripExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLPagerTabStripExampleViewController.swift; sourceTree = "<group>"; };
 		19A2398A6B382E1E2E3FEDF3 /* Pods-TwitterProfile_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterProfile_Example.release.xcconfig"; path = "Target Support Files/Pods-TwitterProfile_Example/Pods-TwitterProfile_Example.release.xcconfig"; sourceTree = "<group>"; };
 		2AA184AF0F0464E19C4738BF /* Pods_TwitterProfile_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterProfile_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		52EB42C1C0FF9B11AB529B9E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		52EB42C1C0FF9B11AB529B9E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		5AF2ADA837315B3356FE4FC9 /* Pods_TwitterProfile_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterProfile_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* TwitterProfile_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterProfile_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,7 +58,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		82F2B8BF4CDDF3C2991F584F /* Pods-TwitterProfile_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterProfile_Tests.debug.xcconfig"; path = "Target Support Files/Pods-TwitterProfile_Tests/Pods-TwitterProfile_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		B239A98947CF79F87E6708ED /* TwitterProfile.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = TwitterProfile.podspec; path = ../TwitterProfile.podspec; sourceTree = "<group>"; };
+		B239A98947CF79F87E6708ED /* TwitterProfile.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TwitterProfile.podspec; path = ../TwitterProfile.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E0809B0B2CF75F06EB31F676 /* Pods-TwitterProfile_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterProfile_Example.debug.xcconfig"; path = "Target Support Files/Pods-TwitterProfile_Example/Pods-TwitterProfile_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C76B9D1230986460060C09E /* TwitterProfile.framework in Frameworks */,
 				49BAEB55DF4877EDF805DB7C /* Pods_TwitterProfile_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,9 +83,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C76B9E123098A110060C09E /* ChildControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0C76B9F22309949C0060C09E /* CustomPageViewController */,
+				0C76B9E323098A110060C09E /* BottomViewController.swift */,
+				0C76B9E423098A110060C09E /* HeaderViewController.swift */,
+				0C76B9E623098A110060C09E /* XLPagerTabStripExampleViewController.swift */,
+			);
+			path = ChildControllers;
+			sourceTree = "<group>";
+		};
+		0C76B9F22309949C0060C09E /* CustomPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C76B9E223098A110060C09E /* BottomPageViewController.swift */,
+				0C76B9E523098A110060C09E /* BottomPageContainerViewController.swift */,
+			);
+			path = CustomPageViewController;
+			sourceTree = "<group>";
+		};
 		34E50E3735B99B56157DCACE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0C76B9D0230986460060C09E /* TwitterProfile.framework */,
+				0C76B9CD23097E980060C09E /* TwitterProfile.framework */,
 				2AA184AF0F0464E19C4738BF /* Pods_TwitterProfile_Example.framework */,
 				5AF2ADA837315B3356FE4FC9 /* Pods_TwitterProfile_Tests.framework */,
 			);
@@ -104,6 +140,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				0C76B9E123098A110060C09E /* ChildControllers */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -156,7 +193,6 @@
 				82F2B8BF4CDDF3C2991F584F /* Pods-TwitterProfile_Tests.debug.xcconfig */,
 				03061125A8D02E9EE9F330D5 /* Pods-TwitterProfile_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -208,7 +244,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -227,6 +263,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -314,10 +351,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TwitterProfile_Example/Pods-TwitterProfile_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/TwitterProfile/TwitterProfile.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterProfile.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -332,7 +371,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				0C76B9E823098A110060C09E /* BottomViewController.swift in Sources */,
+				0C76B9E923098A110060C09E /* HeaderViewController.swift in Sources */,
+				0C76B9E723098A110060C09E /* BottomPageViewController.swift in Sources */,
+				0C76B9EA23098A110060C09E /* BottomPageContainerViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				0C76B9EB23098A110060C09E /* XLPagerTabStripExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -386,12 +431,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -424,6 +471,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -431,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -439,12 +488,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -469,6 +520,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -484,7 +536,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -499,7 +550,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -520,7 +570,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwitterProfile_Example.app/TwitterProfile_Example";
 			};
 			name = Debug;
@@ -538,7 +587,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwitterProfile_Example.app/TwitterProfile_Example";
 			};
 			name = Release;

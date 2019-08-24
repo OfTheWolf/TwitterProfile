@@ -258,10 +258,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = MNQ5D2G6V5;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = MNQ5D2G6V5;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -542,6 +544,7 @@
 			baseConfigurationReference = E0809B0B2CF75F06EB31F676 /* Pods-TwitterProfile_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MNQ5D2G6V5;
 				INFOPLIST_FILE = TwitterProfile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -556,6 +559,7 @@
 			baseConfigurationReference = 19A2398A6B382E1E2E3FEDF3 /* Pods-TwitterProfile_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MNQ5D2G6V5;
 				INFOPLIST_FILE = TwitterProfile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -569,6 +573,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 82F2B8BF4CDDF3C2991F584F /* Pods-TwitterProfile_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = MNQ5D2G6V5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -590,6 +595,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 03061125A8D02E9EE9F330D5 /* Pods-TwitterProfile_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = MNQ5D2G6V5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

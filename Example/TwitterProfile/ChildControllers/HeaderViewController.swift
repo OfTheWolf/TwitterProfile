@@ -37,9 +37,9 @@ class HeaderViewController: UIViewController {
     func adjustBannerView(with progress: CGFloat, headerHeight: ClosedRange<CGFloat>){
         
         let y = progress * (headerHeight.upperBound - headerHeight.lowerBound)
-        
-        if y > headerHeight.lowerBound{
-            bannerImageView.center.y = bannerInitialCenterY + y - headerHeight.lowerBound
+        let topLimit = bannerImageView.frame.height - headerHeight.lowerBound
+        if y > topLimit{
+            bannerImageView.center.y = bannerInitialCenterY + y - topLimit
             if stickyBanner{
                 self.stickyBanner = false
                 self.view.bringSubviewToFront(bannerImageView)

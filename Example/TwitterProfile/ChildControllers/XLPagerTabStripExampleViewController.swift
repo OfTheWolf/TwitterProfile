@@ -41,35 +41,55 @@ class XLPagerTabStripExampleViewController: ButtonBarPagerTabStripViewController
 
     //MARK: Properties
     var isReload = false
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        settings.style.buttonBarBackgroundColor = .white
+        settings.style.buttonBarItemBackgroundColor = .white
+        settings.style.selectedBarBackgroundColor = Colors.twitterBlue
+        settings.style.buttonBarItemTitleColor = Colors.twitterBlue
+        settings.style.selectedBarHeight = 3
+    }
 
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         delegate = self
-        buttonBarView.selectedBar.backgroundColor = .orange
-        buttonBarView.backgroundColor = UIColor(red: 7/255, green: 185/255, blue: 155/255, alpha: 1)
         
+        self.changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+            oldCell?.label.textColor = Colors.twitterGray
+            newCell?.label.textColor = Colors.twitterBlue
+        }
     }
 
     // MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BottomViewController") as! BottomViewController
         vc.pageIndex = 0
+        vc.pageTitle = "Tweets"
         vc.count = 10
         let child_1 = vc
         
         let vc1 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BottomViewController") as! BottomViewController
         vc1.pageIndex = 1
+        vc1.pageTitle = "Tweets & replies"
         vc1.count = 1
         let child_2 = vc1
         
         let vc2 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BottomViewController") as! BottomViewController
         vc2.pageIndex = 2
+        vc2.pageTitle = "Media"
         vc2.count = 10
         let child_3 = vc2
+        
+        let vc3 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BottomViewController") as! BottomViewController
+        vc3.pageIndex = 3
+        vc3.pageTitle = "Likes"
+        vc3.count = 2
+        let child_4 = vc3
 
-        return [child_1, child_2, child_3]
+        return [child_1, child_2, child_3, child_4]
     }
 
     override func reloadPagerTabStripView() {

@@ -11,6 +11,8 @@ import TwitterProfile
 
 class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPProgressDelegate {
     
+    var headerVC: HeaderViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,10 +22,14 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
         
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
     //MARK: TPDataSource
     func headerViewController() -> UIViewController {
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HeaderViewController")
-        return vc
+        headerVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HeaderViewController") as? HeaderViewController
+        return headerVC!
     }
     
     func bottomViewController() -> UIViewController & PagerAwareProtocol {
@@ -34,12 +40,12 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
     
     //headerHeight in the closed range [minValue, maxValue], i.e. minValue...maxValue
     func headerHeight() -> ClosedRange<CGFloat> {
-        return topInset...300
+        return (topInset + 44)...300
     }
     
     //MARK: TPProgressDelegate
     func tp_scrollView(_ scrollView: UIScrollView, didUpdate progress: CGFloat) {
-//        print("log: \(progress)")
+        headerVC?.adjustBannerView(with: progress, headerHeight: headerHeight())
     }
 }
 

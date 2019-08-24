@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C3EBCB62311E0CC00648B8C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3EBCB52311E0CC00648B8C /* Colors.swift */; };
+		0C3EBCB82311E35F00648B8C /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3EBCB72311E35F00648B8C /* EmptyViewController.swift */; };
+		0C3EBCBA2311E38A00648B8C /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3EBCB92311E38A00648B8C /* LabelCell.swift */; };
 		0C76B9D1230986460060C09E /* TwitterProfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C76B9D0230986460060C09E /* TwitterProfile.framework */; };
 		0C76B9E723098A110060C09E /* BottomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E223098A110060C09E /* BottomPageViewController.swift */; };
 		0C76B9E823098A110060C09E /* BottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E323098A110060C09E /* BottomViewController.swift */; };
@@ -35,6 +38,9 @@
 
 /* Begin PBXFileReference section */
 		03061125A8D02E9EE9F330D5 /* Pods-TwitterProfile_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterProfile_Tests.release.xcconfig"; path = "Target Support Files/Pods-TwitterProfile_Tests/Pods-TwitterProfile_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		0C3EBCB52311E0CC00648B8C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0C3EBCB72311E35F00648B8C /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		0C3EBCB92311E38A00648B8C /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		0C61BFE8CF64DFEE8887BCF2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		0C76B9CD23097E980060C09E /* TwitterProfile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TwitterProfile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C76B9D0230986460060C09E /* TwitterProfile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TwitterProfile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +96,8 @@
 				0C76B9E323098A110060C09E /* BottomViewController.swift */,
 				0C76B9E423098A110060C09E /* HeaderViewController.swift */,
 				0C76B9E623098A110060C09E /* XLPagerTabStripExampleViewController.swift */,
+				0C3EBCB72311E35F00648B8C /* EmptyViewController.swift */,
+				0C3EBCB92311E38A00648B8C /* LabelCell.swift */,
 			);
 			path = ChildControllers;
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				0C3EBCB52311E0CC00648B8C /* Colors.swift */,
 			);
 			name = "Example for TwitterProfile";
 			path = TwitterProfile;
@@ -371,11 +380,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				0C3EBCB62311E0CC00648B8C /* Colors.swift in Sources */,
 				0C76B9E823098A110060C09E /* BottomViewController.swift in Sources */,
 				0C76B9E923098A110060C09E /* HeaderViewController.swift in Sources */,
 				0C76B9E723098A110060C09E /* BottomPageViewController.swift in Sources */,
 				0C76B9EA23098A110060C09E /* BottomPageContainerViewController.swift in Sources */,
+				0C3EBCB82311E35F00648B8C /* EmptyViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				0C3EBCBA2311E38A00648B8C /* LabelCell.swift in Sources */,
 				0C76B9EB23098A110060C09E /* XLPagerTabStripExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,7 @@ class BottomViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     var pageIndex: Int = 0
+    var pageTitle: String?
     
     var count = 0
 
@@ -32,64 +33,8 @@ class BottomViewController: UIViewController, UITableViewDataSource, UITableView
     }
 }
 
-class LabelCell: UITableViewCell {
-    
-    static var reuseId = "labelCell"
-    
-    @IBOutlet weak var label: UILabel!
-    
-    var contentText: String?{
-        didSet{
-            label.text = contentText
-        }
-    }
-    
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        selectionStyle = .none
-//        contentView.addSubview(label)
-//        backgroundColor = .orange
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
-}
-
-
-
-class EmptyViewController: UIViewController {
-    
-    let label = UILabel()
-    
-    override func loadView() {
-        
-        let view = UIView()
-        view.backgroundColor = .white
-        
-        label.text = "Empty View"
-        label.textAlignment = .center
-        label.textColor = .black
-        label.backgroundColor = .lightGray
-        view.addSubview(label)
-        self.view = view
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        label.frame = CGRect.init(x: 0, y: 0, width: view.bounds.width, height: 200)
-    }
-}
-
-extension EmptyViewController: IndicatorInfoProvider{
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo.init(title: "Tab 1")
-    }
-}
-
 extension BottomViewController: IndicatorInfoProvider{
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo.init(title: "Tab \(pageIndex)")
+        return IndicatorInfo.init(title: pageTitle ?? "Tab \(pageIndex)")
     }
 }

@@ -7,7 +7,7 @@
 
 ## Demo
 
-![Demo](demo.gif)
+![Demo](https://github.com/OfTheWolf/TwitterProfile/blob/master/demo.gif)
 
 
 ## Example

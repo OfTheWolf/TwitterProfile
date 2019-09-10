@@ -40,7 +40,7 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
     
     //headerHeight in the closed range [minValue, maxValue], i.e. minValue...maxValue
     func headerHeight() -> ClosedRange<CGFloat> {
-        return (topInset + 44)...300
+        return (topInset + 44)...250
     }
     
     //MARK: TPProgressDelegate

@@ -102,7 +102,6 @@ class MasterViewController : UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print("log: is  \(scrollView.contentOffset.y) \(self.scrollView.contentOffset.y) \(0)")
         
         contentOffsets[currentIndex] = scrollView.contentOffset.y
         let topHeight = dataSource.headerHeight().upperBound - dataSource.headerHeight().lowerBound
@@ -118,12 +117,18 @@ class MasterViewController : UIViewController, UIScrollViewDelegate {
             self.scrollView.contentOffset.y = dataSource.headerHeight().upperBound - dataSource.headerHeight().lowerBound
             (self.panViews[currentIndex] as? UIScrollView)?.contentOffset.y = scrollView.contentOffset.y - self.scrollView.contentOffset.y
         }
-        
+
         if scrollView.contentOffset.y < 0{
             headerView.frame = CGRect(x: headerView.frame.minX,
-                                      y: min(dataSource.headerHeight().upperBound - dataSource.headerHeight().lowerBound, scrollView.contentOffset.y),
+                                      y: min(topHeight, scrollView.contentOffset.y),
                                       width: headerView.frame.width,
                                       height: max(dataSource.headerHeight().lowerBound, dataSource.headerHeight().upperBound + -scrollView.contentOffset.y))
+
+        }else{
+            headerView.frame = CGRect(x: headerView.frame.minX,
+                                      y: 0,
+                                      width: headerView.frame.width,
+                                      height: dataSource.headerHeight().upperBound)
         }
         
         let progress = self.scrollView.contentOffset.y / topHeight

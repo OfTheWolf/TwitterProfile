@@ -14,16 +14,18 @@ class HeaderViewController: UIViewController {
     @IBOutlet weak var bannerImageView: UIImageView!
     
     var bannerInitialCenterY: CGFloat!
+    var bannerInitialHeight: CGFloat!
     var stickyBanner = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
-        userImageView.layer.cornerRadius = userImageView.frame.width / 2
-        userImageView.layer.masksToBounds = true
-        userImageView.layer.borderColor = UIColor.white.cgColor
-        userImageView.layer.borderWidth = 4
+        userImageView.layer.zPosition = 2
+        bannerImageView.layer.zPosition = 1
         
+        userImageView.rounded()
+        userImageView.bordered(lineWidth: 8)
     }
     
     override func viewDidLayoutSubviews() {
@@ -32,26 +34,32 @@ class HeaderViewController: UIViewController {
         if bannerInitialCenterY == nil{
             bannerInitialCenterY = bannerImageView.center.y
         }
+        
+        if bannerInitialHeight == nil{
+            bannerInitialHeight = bannerImageView.frame.height
+        }
+        
+       
     }
     
     func adjustBannerView(with progress: CGFloat, headerHeight: ClosedRange<CGFloat>){
-        
         let y = progress * (headerHeight.upperBound - headerHeight.lowerBound)
-        let topLimit = bannerImageView.frame.height - headerHeight.lowerBound
+        let topLimit = bannerInitialHeight - headerHeight.lowerBound
         if y > topLimit{
             bannerImageView.center.y = bannerInitialCenterY + y - topLimit
             if stickyBanner{
                 self.stickyBanner = false
-                self.view.bringSubviewToFront(bannerImageView)
+                self.userImageView.layer.zPosition = 0
             }
         }else{
+            bannerImageView.center.y = bannerInitialCenterY
             let scale = min(1, (1-progress))
             let t = CGAffineTransform(scaleX: scale, y: scale)
             userImageView.transform = t.translatedBy(x: 0, y: userImageView.frame.height*(1 - scale))
             
             if !stickyBanner{
                 self.stickyBanner = true
-                self.view.sendSubviewToBack(bannerImageView)
+                self.userImageView.layer.zPosition = 2
             }
         }
     }

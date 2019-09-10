@@ -23,6 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Eh-D5-Sdm" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="465" y="37"/>
         </scene>
         <!--Header View Controller-->
         <scene sceneID="Y4y-7Q-Cvg">
@@ -32,20 +33,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-qm-BuC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnF-BH-5Ii">
                                 <rect key="frame" x="0.0" y="270" width="414" height="130"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haluk Levent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmE-Ll-bNu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Haluk Levent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmE-Ll-bNu">
                                         <rect key="frame" x="20" y="60" width="134" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@haluklevent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtG-nl-8vb">
-                                        <rect key="frame" x="20" y="86.5" width="100" height="20"/>
+                                        <rect key="frame" x="20" y="86.5" width="100" height="20.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -62,10 +60,16 @@
                                 <constraints>
                                     <constraint firstItem="QtG-nl-8vb" firstAttribute="top" secondItem="LmE-Ll-bNu" secondAttribute="bottom" id="CLD-Jw-MQI"/>
                                     <constraint firstItem="QtG-nl-8vb" firstAttribute="leading" secondItem="LmE-Ll-bNu" secondAttribute="leading" id="M3M-WC-ia6"/>
+                                    <constraint firstAttribute="height" constant="130" id="SqC-7v-JLC"/>
                                     <constraint firstItem="j2C-VP-cbr" firstAttribute="leading" secondItem="LmE-Ll-bNu" secondAttribute="trailing" constant="8" id="TLq-Lm-475"/>
+                                    <constraint firstAttribute="bottom" secondItem="QtG-nl-8vb" secondAttribute="bottom" constant="23" id="Zdq-Oh-Cei"/>
                                     <constraint firstItem="j2C-VP-cbr" firstAttribute="bottom" secondItem="LmE-Ll-bNu" secondAttribute="bottom" constant="-5" id="tkB-Vq-6qK"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QtG-nl-8vb" secondAttribute="trailing" constant="15" id="yku-Bx-7Ba"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-qm-BuC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="haluk" translatesAutoresizingMaskIntoConstraints="NO" id="oMV-om-niK">
                                 <rect key="frame" x="20" y="240" width="80" height="80"/>
                                 <constraints>
@@ -76,7 +80,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.16862745100000001" green="0.25882352939999997" blue="0.34509803919999998" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="oMV-om-niK" secondAttribute="bottom" constant="80" id="7u3-Et-FYi"/>
                             <constraint firstItem="xHT-qm-BuC" firstAttribute="leading" secondItem="dl4-MR-H5a" secondAttribute="leading" id="DLm-aW-3CS"/>
                             <constraint firstItem="tnF-BH-5Ii" firstAttribute="trailing" secondItem="dl4-MR-H5a" secondAttribute="trailing" id="G75-VM-Qa0"/>
                             <constraint firstItem="oMV-om-niK" firstAttribute="leading" secondItem="dl4-MR-H5a" secondAttribute="leading" constant="20" id="Qbg-FW-w9W"/>

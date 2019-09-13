@@ -26,13 +26,15 @@ class MasterViewController : UIViewController, UIScrollViewDelegate {
     
     override func loadView() {
         scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.backgroundColor = .lightGray
         let f = UIScreen.main.bounds
         scrollView.frame = CGRect(x: f.minX, y: f.minY, width: f.width, height: f.height)
         scrollView.contentSize = CGSize.init(width: f.width, height: f.height + dataSource.headerHeight().upperBound)
         
         overlayScrollView = UIScrollView()
-        overlayScrollView.backgroundColor = UIColor.orange.withAlphaComponent(0.25)
+        overlayScrollView.showsVerticalScrollIndicator = false
+        overlayScrollView.backgroundColor = UIColor.clear
         overlayScrollView.frame = CGRect(x: f.minX, y: f.minY, width: f.width, height: f.height)
         overlayScrollView.contentSize = self.scrollView.contentSize
         
@@ -61,7 +63,9 @@ class MasterViewController : UIViewController, UIScrollViewDelegate {
         scrollView.addGestureRecognizer(overlayScrollView.panGestureRecognizer)
         overlayScrollView.donotAdjustContentInset()
         scrollView.donotAdjustContentInset()
+        overlayScrollView.layer.zPosition = 999
         
+        delegate?.tp_scrollViewDidLoad(overlayScrollView)
     }
     
     override func viewDidLoad() {
@@ -92,11 +96,21 @@ class MasterViewController : UIViewController, UIScrollViewDelegate {
         })
     }
     
+    func getContentSize(for bottomView: UIView) -> CGSize{
+        if let scroll = bottomView as? UIScrollView{
+            let bottomHeight = max(scroll.contentSize.height, self.view.frame.height - dataSource.headerHeight().lowerBound - pagerTabHeight - bottomInset)
+            return CGSize.init(width: scroll.contentSize.width, height: bottomHeight + dataSource.headerHeight().upperBound + pagerTabHeight + bottomInset)
+        }else{
+            let bottomHeight = self.view.frame.height - dataSource.headerHeight().lowerBound - pagerTabHeight
+            return CGSize.init(width: bottomView.frame.width, height: bottomHeight + dataSource.headerHeight().upperBound + pagerTabHeight + bottomInset)
+        }
+        
+    }
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let obj = object as? UIScrollView, let scroll = self.panViews[currentIndex] as? UIScrollView {
             if obj == scroll && keyPath == #keyPath(UIScrollView.contentSize) {
-                let bottomHeight = max(scroll.contentSize.height, self.view.frame.height - dataSource.headerHeight().lowerBound)
-                self.overlayScrollView.contentSize = CGSize.init(width: scroll.contentSize.width, height: bottomHeight + dataSource.headerHeight().upperBound + pagerTabHeight + bottomInset)
+                self.overlayScrollView.contentSize = getContentSize(for: scroll)
             }
         }
     }
@@ -116,6 +130,7 @@ class MasterViewController : UIViewController, UIScrollViewDelegate {
         }else{
             self.scrollView.contentOffset.y = dataSource.headerHeight().upperBound - dataSource.headerHeight().lowerBound
             (self.panViews[currentIndex] as? UIScrollView)?.contentOffset.y = scrollView.contentOffset.y - self.scrollView.contentOffset.y
+            
         }
 
         if scrollView.contentOffset.y < 0{
@@ -157,12 +172,10 @@ extension MasterViewController : BottomPageDelegate {
         }
         
         if let scrollView = self.panViews[currentIndex] as? UIScrollView{
-            let bottomHeight = max(scrollView.contentSize.height, self.view.frame.height - dataSource.headerHeight().lowerBound)
-            self.overlayScrollView.contentSize = CGSize.init(width: scrollView.contentSize.width, height: bottomHeight + dataSource.headerHeight().upperBound + pagerTabHeight + bottomInset)
+            self.overlayScrollView.contentSize = getContentSize(for: scrollView)
             scrollView.addObserver(self, forKeyPath: #keyPath(UIScrollView.contentSize), options: .new, context: nil)
-        }else if let view = self.panViews[currentIndex]{
-            let bottomHeight = self.view.frame.height - dataSource.headerHeight().lowerBound
-            self.overlayScrollView.contentSize = CGSize.init(width: view.frame.width, height: bottomHeight + dataSource.headerHeight().upperBound + pagerTabHeight + bottomInset)
+        }else if let bottomView = self.panViews[currentIndex]{
+            self.overlayScrollView.contentSize = getContentSize(for: bottomView)
         }
     }
 

@@ -13,6 +13,8 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
     
     var headerVC: HeaderViewController?
     
+    let refresh = UIRefreshControl()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +22,13 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
         //observe header scroll progress with TPProgressDelegate
         self.tp_configure(with: self, delegate: self)
         
+    }
+    
+    @objc func handleRefreshControl() {
+        print("refreshing")
+        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+            self.refresh.endRefreshing()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -40,12 +49,23 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
     
     //headerHeight in the closed range [minValue, maxValue], i.e. minValue...maxValue
     func headerHeight() -> ClosedRange<CGFloat> {
-        return (topInset + 44)...250
+        return (topInset + 44)...300
     }
     
     //MARK: TPProgressDelegate
     func tp_scrollView(_ scrollView: UIScrollView, didUpdate progress: CGFloat) {
         headerVC?.adjustBannerView(with: progress, headerHeight: headerHeight())
+    }
+    
+    func tp_scrollViewDidLoad(_ scrollView: UIScrollView) {
+        
+        refresh.tintColor = .white
+        refresh.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+        
+        let refreshView = UIView(frame: CGRect(x: 0, y: 44, width: 0, height: 0))
+        scrollView.addSubview(refreshView)
+        refreshView.addSubview(refresh)
+
     }
 }
 

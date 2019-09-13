@@ -53,7 +53,7 @@ class HeaderViewController: UIViewController {
             }
         }else{
             bannerImageView.center.y = bannerInitialCenterY
-            let scale = min(1, (1-progress))
+            let scale = min(1, (1-progress*1.3))
             let t = CGAffineTransform(scaleX: scale, y: scale)
             userImageView.transform = t.translatedBy(x: 0, y: userImageView.frame.height*(1 - scale))
             

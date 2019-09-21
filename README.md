@@ -27,7 +27,7 @@ pod 'TwitterProfile'
 
 ## Author
 
-OfTheWolf, uguboz@gmail.com
+uğur, uguboz@gmail.com
 
 ## License
 

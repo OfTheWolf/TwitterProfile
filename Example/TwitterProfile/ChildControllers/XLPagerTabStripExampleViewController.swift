@@ -29,7 +29,7 @@ import XLPagerTabStrip
 class XLPagerTabStripExampleViewController: ButtonBarPagerTabStripViewController, PagerAwareProtocol {
     
     //MARK: PagerAwareProtocol
-    var pageDelegate: BottomPageDelegate?
+    weak var pageDelegate: BottomPageDelegate?
     
     var currentViewController: UIViewController?{
         return viewControllers[currentIndex]
@@ -57,7 +57,7 @@ class XLPagerTabStripExampleViewController: ButtonBarPagerTabStripViewController
 
         delegate = self
         
-        self.changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+        self.changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             oldCell?.label.textColor = Colors.twitterGray
             newCell?.label.textColor = Colors.twitterBlue
         }

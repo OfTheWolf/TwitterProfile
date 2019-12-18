@@ -14,7 +14,7 @@ class BottomPageContainerViewController: UIViewController, PagerAwareProtocol{
     @IBOutlet weak var pagerContainer: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
 
-    var pageDelegate: BottomPageDelegate?
+    weak var pageDelegate: BottomPageDelegate?
     
     var currentViewController: UIViewController?{
         return pager?.currentViewController

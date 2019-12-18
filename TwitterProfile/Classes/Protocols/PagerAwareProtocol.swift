@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol PagerAwareProtocol {
+public protocol PagerAwareProtocol: class {
     var pageDelegate: BottomPageDelegate? {get set}
     var currentViewController: UIViewController? {get}
     var pagerTabHeight: CGFloat? {get}

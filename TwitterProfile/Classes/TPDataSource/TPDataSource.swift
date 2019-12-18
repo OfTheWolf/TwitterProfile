@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol TPDataSource {
+public protocol TPDataSource: class {
     func headerViewController() -> UIViewController
     func bottomViewController() -> UIViewController & PagerAwareProtocol
     func headerHeight() -> ClosedRange<CGFloat>

@@ -26,6 +26,7 @@ class MasterViewController : UIViewController, UIScrollViewDelegate {
     
     override func loadView() {
         scrollView = UIScrollView()
+        scrollView.scrollsToTop = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.backgroundColor = .lightGray
         let f = UIScreen.main.bounds

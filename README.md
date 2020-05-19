@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/TwitterProfile.svg?style=flat)](https://cocoapods.org/pods/TwitterProfile)
 [![Platform](https://img.shields.io/cocoapods/p/TwitterProfile.svg?style=flat)](https://cocoapods.org/pods/TwitterProfile)
 
+Easily create screens like Instagram and Twitter profile. Example project shows Twitter case but you can change header and bottom view controllers easily to mimic instagram or similar UIs. 
+
 ## Demo
 
 ![Demo](https://github.com/OfTheWolf/TwitterProfile/blob/master/demo.gif)

@@ -16,7 +16,6 @@ class EmptyViewController: UIViewController {
     override func loadView() {
         
         let view = UIView()
-        view.backgroundColor = .white
         
         label.text = "Empty View"
         label.textAlignment = .center

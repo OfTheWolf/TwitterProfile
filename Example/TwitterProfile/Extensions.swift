@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIView{
-    func bordered(lineWidth: CGFloat, strokeColor: UIColor = UIColor.white){
+    func bordered(lineWidth: CGFloat, strokeColor: UIColor = UIColor.background){
         let path = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: self.frame.width/2)
         let borderLayer = CAShapeLayer()
         borderLayer.lineWidth = lineWidth
@@ -27,4 +27,14 @@ extension UIView{
         maskLayer.path = path.cgPath
         self.layer.mask = maskLayer
     }
+}
+
+extension UIColor{
+    static let background: UIColor  = {
+        if #available(iOS 13.0, *) {
+            return UIColor.systemBackground
+        } else {
+            return UIColor.white
+        }
+    }()
 }

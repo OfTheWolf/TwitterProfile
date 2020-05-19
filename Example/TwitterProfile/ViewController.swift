@@ -24,6 +24,12 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     @objc func handleRefreshControl() {
         print("refreshing")
         DispatchQueue.main.asyncAfter(deadline: .now()+1) {
@@ -54,7 +60,7 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
     
     //MARK: TPProgressDelegate
     func tp_scrollView(_ scrollView: UIScrollView, didUpdate progress: CGFloat) {
-        headerVC?.adjustBannerView(with: progress, headerHeight: headerHeight())
+        headerVC?.update(with: progress, headerHeight: headerHeight())
     }
     
     func tp_scrollViewDidLoad(_ scrollView: UIScrollView) {
@@ -70,3 +76,12 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
 }
 
 
+extension UIImage {
+    func alpha(_ value:CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+}

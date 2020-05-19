@@ -44,8 +44,8 @@ class XLPagerTabStripExampleViewController: ButtonBarPagerTabStripViewController
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        settings.style.buttonBarBackgroundColor = .white
-        settings.style.buttonBarItemBackgroundColor = .white
+        settings.style.buttonBarBackgroundColor = .background
+        settings.style.buttonBarItemBackgroundColor = .background
         settings.style.selectedBarBackgroundColor = Colors.twitterBlue
         settings.style.buttonBarItemTitleColor = Colors.twitterBlue
         settings.style.selectedBarHeight = 3

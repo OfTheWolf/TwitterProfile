@@ -54,14 +54,14 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
         return bottomVC
     }
     
-    //headerHeight in the closed range [minValue, maxValue], i.e. minValue...maxValue
-    func headerHeight() -> ClosedRange<CGFloat> {
-        return (topInset + 44)...300
+    //stop scrolling header at this point
+    func minHeaderHeight() -> CGFloat {
+        return (topInset + 44)
     }
     
     //MARK: TPProgressDelegate
     func tp_scrollView(_ scrollView: UIScrollView, didUpdate progress: CGFloat) {
-        headerVC?.update(with: progress, headerHeight: headerHeight())
+        headerVC?.update(with: progress, minHeaderHeight: minHeaderHeight())
     }
     
     func tp_scrollViewDidLoad(_ scrollView: UIScrollView) {

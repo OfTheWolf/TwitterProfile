@@ -10,11 +10,14 @@ import UIKit
 
 class HeaderViewController: UIViewController {
     
+    @IBOutlet weak var coverImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var covermageView: UIImageView!
     @IBOutlet weak var titleView: UIScrollView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    @IBOutlet weak var gradientView: UIView!
 
     var animator = UIViewPropertyAnimator(duration: 0.5, curve: .linear, animations: nil)
 
@@ -32,15 +35,17 @@ class HeaderViewController: UIViewController {
             self.visualEffectView.effect = UIBlurEffect(style: .regular)
         }
         
-        userImageView.layer.zPosition = 2
-        covermageView.layer.zPosition = 1
-        visualEffectView.layer.zPosition = 1.1
-        titleView.layer.zPosition = 1.2
+        covermageView.layer.zPosition = 0.1
+        visualEffectView.layer.zPosition = covermageView.layer.zPosition + 0.1
+        titleView.layer.zPosition = visualEffectView.layer.zPosition + 0.1
+        userImageView.layer.zPosition = titleView.layer.zPosition
 
         visualEffectView.effect = nil
 
         userImageView.rounded()
         userImageView.bordered(lineWidth: 8)
+        
+        descriptionLabel.numberOfLines = 2
         
     }
     
@@ -53,6 +58,7 @@ class HeaderViewController: UIViewController {
         super.viewDidLayoutSubviews()
 
         if !viewDidLayoutOnce{
+            viewDidLayoutOnce = true
             covernitialCenterY = covermageView.center.y
             covernitialHeight = covermageView.frame.height
             titleInitialCenterY = titleView.center.y
@@ -60,11 +66,20 @@ class HeaderViewController: UIViewController {
 
     }
     
-    func update(with progress: CGFloat, headerHeight: ClosedRange<CGFloat>){
+    @IBAction func readMoreAction(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            self.descriptionLabel.numberOfLines = 0
+            self.gradientView.isHidden = true
+        }
+    }
+    
+    func update(with progress: CGFloat, minHeaderHeight: CGFloat){
 
-        let y = progress * (view.frame.height - headerHeight.lowerBound)
+        let y = progress * (view.frame.height - minHeaderHeight)
+        
+        coverImageHeightConstraint.constant = max(covernitialHeight, covernitialHeight - y)
                 
-        let titleOffset = max(min(0, (userNameLabel.convert(userNameLabel.bounds, to: nil).minY - headerHeight.lowerBound)), -titleView.frame.height)
+        let titleOffset = max(min(0, (userNameLabel.convert(userNameLabel.bounds, to: nil).minY - minHeaderHeight)), -titleView.frame.height)
         titleView.contentOffset.y = -titleOffset-titleView.frame.height
         
         if progress < 0 {
@@ -73,12 +88,12 @@ class HeaderViewController: UIViewController {
             animator.fractionComplete = (abs((titleOffset)/(titleView.frame.height)))
         }
         
-        let topLimit = covernitialHeight - headerHeight.lowerBound
+        let topLimit = covernitialHeight - minHeaderHeight
         if y > topLimit{
             covermageView.center.y = covernitialCenterY + y - topLimit
             if stickyCover{
                 self.stickyCover = false
-                self.userImageView.layer.zPosition = 0
+                userImageView.layer.zPosition = 0
             }
         }else{
             covermageView.center.y = covernitialCenterY
@@ -88,7 +103,7 @@ class HeaderViewController: UIViewController {
             
             if !stickyCover{
                 self.stickyCover = true
-                self.userImageView.layer.zPosition = 2
+                userImageView.layer.zPosition = titleView.layer.zPosition
             }
         }
         visualEffectView.center.y = covermageView.center.y

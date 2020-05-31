@@ -11,5 +11,5 @@ import UIKit
 public protocol TPDataSource: class {
     func headerViewController() -> UIViewController
     func bottomViewController() -> UIViewController & PagerAwareProtocol
-    func headerHeight() -> ClosedRange<CGFloat>
+    func minHeaderHeight() -> CGFloat //stop scrolling headerView at this point
 }

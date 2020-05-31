@@ -16,6 +16,7 @@
 		0C76B9E923098A110060C09E /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E423098A110060C09E /* HeaderViewController.swift */; };
 		0C76B9EA23098A110060C09E /* BottomPageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E523098A110060C09E /* BottomPageContainerViewController.swift */; };
 		0C76B9EB23098A110060C09E /* XLPagerTabStripExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E623098A110060C09E /* XLPagerTabStripExampleViewController.swift */; };
+		0C7E40DC24842AB5007145E1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E40DB24842AB5007145E1 /* GradientView.swift */; };
 		0CC8C9582328081B0061AAB7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8C9572328081B0061AAB7 /* Extensions.swift */; };
 		2DAD2D9BE4913D75B9C69ABC /* Pods_TwitterProfile_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF2ADA837315B3356FE4FC9 /* Pods_TwitterProfile_Tests.framework */; };
 		49BAEB55DF4877EDF805DB7C /* Pods_TwitterProfile_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA184AF0F0464E19C4738BF /* Pods_TwitterProfile_Example.framework */; };
@@ -50,6 +51,7 @@
 		0C76B9E423098A110060C09E /* HeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
 		0C76B9E523098A110060C09E /* BottomPageContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPageContainerViewController.swift; sourceTree = "<group>"; };
 		0C76B9E623098A110060C09E /* XLPagerTabStripExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLPagerTabStripExampleViewController.swift; sourceTree = "<group>"; };
+		0C7E40DB24842AB5007145E1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		0CC8C9572328081B0061AAB7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		19A2398A6B382E1E2E3FEDF3 /* Pods-TwitterProfile_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterProfile_Example.release.xcconfig"; path = "Target Support Files/Pods-TwitterProfile_Example/Pods-TwitterProfile_Example.release.xcconfig"; sourceTree = "<group>"; };
 		2AA184AF0F0464E19C4738BF /* Pods_TwitterProfile_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterProfile_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				0C3EBCB52311E0CC00648B8C /* Colors.swift */,
 				0CC8C9572328081B0061AAB7 /* Extensions.swift */,
+				0C7E40DB24842AB5007145E1 /* GradientView.swift */,
 				0C76B9E123098A110060C09E /* ChildControllers */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -256,7 +259,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -385,6 +388,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				0C3EBCB62311E0CC00648B8C /* Colors.swift in Sources */,
+				0C7E40DC24842AB5007145E1 /* GradientView.swift in Sources */,
 				0C76B9E823098A110060C09E /* BottomViewController.swift in Sources */,
 				0C76B9E923098A110060C09E /* HeaderViewController.swift in Sources */,
 				0C76B9E723098A110060C09E /* BottomPageViewController.swift in Sources */,
@@ -537,7 +541,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;

@@ -55,6 +55,7 @@ public extension UIViewController {
         vc.dataSource = dataSource
         vc.delegate = delegate
         self.add(vc)
+        vc.view.pinEdges(to: self.view)
     }
 }
 
@@ -84,7 +85,7 @@ internal extension UIView{
         anchor.constraint(equalToConstant: constant).isActive = true
     }
     
-    func snap(to view: UIView, insets: UIEdgeInsets = .zero){
+    func pinEdges(to view: UIView, insets: UIEdgeInsets = .zero){
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let top = NSLayoutConstraint(item: self,

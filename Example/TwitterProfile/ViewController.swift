@@ -47,10 +47,11 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
         return headerVC!
     }
     
+    var bottomVC: XLPagerTabStripExampleViewController!
     func bottomViewController() -> UIViewController & PagerAwareProtocol {
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "XLPagerTabStripExampleViewController") as! XLPagerTabStripExampleViewController
+        bottomVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "XLPagerTabStripExampleViewController") as! XLPagerTabStripExampleViewController
         //        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BottomPageContainerViewController") as! BottomPageContainerViewController
-        return vc
+        return bottomVC
     }
     
     //headerHeight in the closed range [minValue, maxValue], i.e. minValue...maxValue
@@ -71,17 +72,5 @@ class ViewController : UIViewController, UIScrollViewDelegate, TPDataSource, TPP
         let refreshView = UIView(frame: CGRect(x: 0, y: 44, width: 0, height: 0))
         scrollView.addSubview(refreshView)
         refreshView.addSubview(refresh)
-
-    }
-}
-
-
-extension UIImage {
-    func alpha(_ value:CGFloat) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
     }
 }

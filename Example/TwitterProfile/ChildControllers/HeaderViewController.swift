@@ -62,17 +62,15 @@ class HeaderViewController: UIViewController {
     
     func update(with progress: CGFloat, headerHeight: ClosedRange<CGFloat>){
 
-        let y = progress * (headerHeight.upperBound - headerHeight.lowerBound)
+        let y = progress * (view.frame.height - headerHeight.lowerBound)
                 
-        let h =  (headerHeight.upperBound - headerHeight.lowerBound)
-        let hh = userNameLabel.frame.minY + titleView.frame.height + headerHeight.lowerBound - 5
-        let titleOffset = max(-titleView.frame.height, min(0, -hh + h * progress))
-        titleView.contentOffset.y = titleOffset
-
+        let titleOffset = max(min(0, (userNameLabel.convert(userNameLabel.bounds, to: nil).minY - headerHeight.lowerBound)), -titleView.frame.height)
+        titleView.contentOffset.y = -titleOffset-titleView.frame.height
+        
         if progress < 0 {
             animator.fractionComplete = abs(min(0, progress))
         }else{
-            animator.fractionComplete = (1 - abs(titleOffset/(titleView.frame.height)))
+            animator.fractionComplete = (abs((titleOffset)/(titleView.frame.height)))
         }
         
         let topLimit = covernitialHeight - headerHeight.lowerBound

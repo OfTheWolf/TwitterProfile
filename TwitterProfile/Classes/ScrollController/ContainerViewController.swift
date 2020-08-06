@@ -114,6 +114,14 @@ class ContainerViewController : UIViewController, UIScrollViewDelegate {
         delegate?.tp_scrollViewDidLoad(overlayScrollView)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.overlayScrollView != nil {
+            self.scrollViewDidScroll(self.overlayScrollView)
+        }
+    }
+
+    
     private func updateOverlayScrollContentSize(with bottomView: UIView){
         self.overlayScrollView.contentSize = getContentSize(for: bottomView)
     }

@@ -116,7 +116,15 @@ class ContainerViewController : UIViewController, UIScrollViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if self.overlayScrollView != nil {
+        
+        if self.dataSource.resetOffsetViewWillAppear() && self.overlayScrollView != nil {
+            self.scrollViewDidScroll(self.overlayScrollView)
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.dataSource.resetOffsetViewDidAppear() && self.overlayScrollView != nil {
             self.scrollViewDidScroll(self.overlayScrollView)
         }
     }

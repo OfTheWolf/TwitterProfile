@@ -8,12 +8,23 @@
 
 import UIKit
 
-class ContainerViewController : UIViewController, UIScrollViewDelegate {
+class ContainerViewController : UIViewController, UIScrollViewDelegate, UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        let contentOffsetY = subContentOffsets[currentIndex] ?? 0
+        (self.panViews[currentIndex] as? UIScrollView)?.contentOffset.y = contentOffsetY
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        let contentOffsetY = subContentOffsets[currentIndex] ?? 0
+        (self.panViews[currentIndex] as? UIScrollView)?.contentOffset.y = contentOffsetY
+    }
+    
     private var containerScrollView: UIScrollView! //contains headerVC + bottomVC
     private var overlayScrollView: UIScrollView! //handles whole scroll logic
     private var panViews: [Int: UIView] = [:] {// bottom view(s)/scrollView(s)
         didSet{
-            if let scrollView = panViews[currentIndex] as? UIScrollView{
+            if let scrollView = panViews[currentIndex] as? UIScrollView {
                 scrollView.panGestureRecognizer.require(toFail: overlayScrollView.panGestureRecognizer)
                 scrollView.donotAdjustContentInset()
                 scrollView.addObserver(self, forKeyPath: #keyPath(UIScrollView.contentSize), options: .new, context: nil)
@@ -42,7 +53,8 @@ class ContainerViewController : UIViewController, UIScrollViewDelegate {
     private var bottomVC: (UIViewController & PagerAwareProtocol)!
 
     private var contentOffsets: [Int: CGFloat] = [:]
-    
+    private var subContentOffsets: [Int: CGFloat] = [:]
+
     
     deinit {
         self.panViews.forEach({ (arg0) in
@@ -74,7 +86,7 @@ class ContainerViewController : UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.delegate = self
         ///Configure overlay scroll
         overlayScrollView.delegate = self
         overlayScrollView.layer.zPosition = CGFloat.greatestFiniteMagnitude
@@ -129,6 +141,12 @@ class ContainerViewController : UIViewController, UIScrollViewDelegate {
         }
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        let contentOffsetY = subContentOffsets[currentIndex] ?? 0
+        (self.panViews[currentIndex] as? UIScrollView)?.contentOffset.y = contentOffsetY
+        print("viewDidDisappear", contentOffsetY)
+    }
     
     private func updateOverlayScrollContentSize(with bottomView: UIView){
         self.overlayScrollView.contentSize = getContentSize(for: bottomView)
@@ -154,26 +172,33 @@ class ContainerViewController : UIViewController, UIScrollViewDelegate {
             }
         }
     }
-    
+        
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         contentOffsets[currentIndex] = scrollView.contentOffset.y
-        let topHeight = bottomView.frame.minY - dataSource.minHeaderHeight()
-        
-        if scrollView.contentOffset.y < topHeight{
+        let topHeight = bottomView.frame.minY - dataSource.minHeaderHeight() - 1
+        if scrollView.contentOffset.y < topHeight {
             self.containerScrollView.contentOffset.y = scrollView.contentOffset.y
             self.panViews.forEach({ (arg0) in
                 let (_, value) = arg0
                 (value as? UIScrollView)?.contentOffset.y = 0
             })
-            contentOffsets.removeAll()
-        }else{
-            self.containerScrollView.contentOffset.y = topHeight
-            (self.panViews[currentIndex] as? UIScrollView)?.contentOffset.y = scrollView.contentOffset.y - self.containerScrollView.contentOffset.y
             
+            let progress = self.containerScrollView.contentOffset.y / topHeight
+            if progress < 0.99 {
+                contentOffsets.removeAll()
+                subContentOffsets.removeAll()
+            }
+            self.delegate?.tp_scrollView(self.containerScrollView, didUpdate: progress)
+        } else {
+            self.containerScrollView.contentOffset.y = topHeight
+            let contentOffsetY = scrollView.contentOffset.y - self.containerScrollView.contentOffset.y
+            (self.panViews[currentIndex] as? UIScrollView)?.contentOffset.y = contentOffsetY
+            self.subContentOffsets[currentIndex] = contentOffsetY
+            let progress = self.containerScrollView.contentOffset.y / topHeight
+            self.delegate?.tp_scrollView(self.containerScrollView, didUpdate: progress)
         }
         
-        let progress = self.containerScrollView.contentOffset.y / topHeight
-        self.delegate?.tp_scrollView(self.containerScrollView, didUpdate: progress)
+        
     }
 }
 
@@ -183,7 +208,7 @@ extension ContainerViewController : BottomPageDelegate {
     func tp_pageViewController(_ currentViewController: UIViewController?, didSelectPageAt index: Int) {
         currentIndex = index
 
-        if let offset = contentOffsets[index]{
+        if let offset = contentOffsets[index] {
             self.overlayScrollView.contentOffset.y = offset
         }else{
             self.overlayScrollView.contentOffset.y = self.containerScrollView.contentOffset.y
@@ -194,9 +219,13 @@ extension ContainerViewController : BottomPageDelegate {
         }
         
         
-        if let panView = self.panViews[currentIndex]{
+        if let panView = self.panViews[currentIndex] {
             updateOverlayScrollContentSize(with: panView)
         }
     }
-
+    
+    func tp_pageViewController(_ currentViewController: UIViewController?, didBeforeSelectPageAt index: Int) {
+        let contentOffsetY = subContentOffsets[index] ?? 0
+        (self.panViews[index] as? UIScrollView)?.contentOffset.y = contentOffsetY
+    }
 }

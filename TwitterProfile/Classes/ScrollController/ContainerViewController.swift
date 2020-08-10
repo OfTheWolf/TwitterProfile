@@ -222,6 +222,11 @@ extension ContainerViewController : BottomPageDelegate {
         if let panView = self.panViews[currentIndex] {
             updateOverlayScrollContentSize(with: panView)
         }
+        
+        for (index, offset) in self.subContentOffsets {
+			(self.panViews[index] as? UIScrollView)?.contentOffset.y = offset
+		}
+        
     }
     
     func tp_pageViewController(_ currentViewController: UIViewController?, didBeforeSelectPageAt index: Int) {

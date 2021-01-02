@@ -16,9 +16,15 @@ class GradientView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         let gradientLayer = self.layer as! CAGradientLayer
+        var color = UIColor.white
+        
+        if #available(iOS 13.0, *) {
+            color = .systemBackground
+        }
+        
         gradientLayer.colors = [
-            UIColor.white.withAlphaComponent(0).cgColor,
-            UIColor.white.cgColor
+            color.withAlphaComponent(0).cgColor,
+            color.cgColor
         ]
         gradientLayer.locations = [0, 0.9]
         backgroundColor = UIColor.clear

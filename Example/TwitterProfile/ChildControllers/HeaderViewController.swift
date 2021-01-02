@@ -19,7 +19,7 @@ class HeaderViewController: UIViewController {
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var gradientView: UIView!
 
-    var animator = UIViewPropertyAnimator(duration: 0.5, curve: .linear, animations: nil)
+    private var animator: UIViewPropertyAnimator?
 
     var titleInitialCenterY: CGFloat!
     var covernitialCenterY: CGFloat!
@@ -30,28 +30,34 @@ class HeaderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        animator.addAnimations {
-            self.visualEffectView.effect = UIBlurEffect(style: .regular)
-        }
         
+        animator = blurAnimator()
+
         covermageView.layer.zPosition = 0.1
         visualEffectView.layer.zPosition = covermageView.layer.zPosition + 0.1
         titleView.layer.zPosition = visualEffectView.layer.zPosition + 0.1
         userImageView.layer.zPosition = titleView.layer.zPosition
-
-        visualEffectView.effect = nil
 
         userImageView.rounded()
         userImageView.bordered(lineWidth: 8)
         
         descriptionLabel.numberOfLines = 2
         
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        
+
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        titleView.setContentOffset(CGPoint(x: 0, y: -titleView.frame.height), animated: true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addBlurAnimation()
+        update(with: lastProgress, minHeaderHeight: lastMinHeaderHeight)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        resetAnimator()
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,8 +68,42 @@ class HeaderViewController: UIViewController {
             covernitialCenterY = covermageView.center.y
             covernitialHeight = covermageView.frame.height
             titleInitialCenterY = titleView.center.y
+            titleView.setContentOffset(CGPoint(x: 0, y: -titleView.frame.height), animated: true)
         }
 
+    }
+    
+    private func blurAnimator() -> UIViewPropertyAnimator{
+        visualEffectView.effect = nil
+        return UIViewPropertyAnimator(duration: 0.5, curve: .linear)
+    }
+    
+    private func addBlurAnimation(){
+        animator?.addAnimations {[weak visualEffectView] in
+            visualEffectView?.effect = UIBlurEffect(style: .regular)
+        }
+        animator?.stopAnimation(true)
+    }
+        
+    private func resetAnimator(){
+        if (animator?.state == .active){
+            animator?.stopAnimation(false)
+        }
+        if animator?.state == .stopped {
+            animator?.finishAnimation(at: .current)
+        }
+        visualEffectView.effect = nil
+    }
+    
+    @objc
+    func appWillEnterForeground(){
+        addBlurAnimation()
+        update(with: lastProgress, minHeaderHeight: lastMinHeaderHeight)
+    }
+    
+    @objc
+    func appDidEnterBackground(){
+        resetAnimator()
     }
     
     @IBAction func readMoreAction(_ sender: UIButton) {
@@ -73,9 +113,18 @@ class HeaderViewController: UIViewController {
         }
     }
     
-    func update(with progress: CGFloat, minHeaderHeight: CGFloat){
+    var lastProgress: CGFloat = .zero
+    var lastMinHeaderHeight: CGFloat = .zero
 
+    func update(with progress: CGFloat, minHeaderHeight: CGFloat){
+        lastProgress = progress
+        lastMinHeaderHeight = minHeaderHeight
+        
         let y = progress * (view.frame.height - minHeaderHeight)
+        
+        guard covernitialHeight != nil else {
+            return
+        }
         
         coverImageHeightConstraint.constant = max(covernitialHeight, covernitialHeight - y)
                 
@@ -83,11 +132,11 @@ class HeaderViewController: UIViewController {
         titleView.contentOffset.y = -titleOffset-titleView.frame.height
         
         if progress < 0 {
-            animator.fractionComplete = abs(min(0, progress))
+            animator?.fractionComplete = abs(min(0, progress))
         }else{
-            animator.fractionComplete = (abs((titleOffset)/(titleView.frame.height)))
+            animator?.fractionComplete = (abs((titleOffset)/(titleView.frame.height)))
         }
-        
+                
         let topLimit = covernitialHeight - minHeaderHeight
         if y > topLimit{
             covermageView.center.y = covernitialCenterY + y - topLimit

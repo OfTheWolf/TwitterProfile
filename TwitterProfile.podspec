@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TwitterProfile'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Twitter profile nested scrolling behaviour'
   s.swift_version    = '5.0'
 # This description is used to generate tags and improve search results.

@@ -12,4 +12,6 @@ public protocol TPDataSource: class {
     func headerViewController() -> UIViewController
     func bottomViewController() -> UIViewController & PagerAwareProtocol
     func minHeaderHeight() -> CGFloat //stop scrolling headerView at this point
+    func resetOffsetViewWillAppear() -> Bool
+    func resetOffsetViewDidAppear() -> Bool
 }

@@ -10,4 +10,5 @@ import UIKit
 
 public protocol BottomPageDelegate: class {
     func tp_pageViewController(_ currentViewController: UIViewController?, didSelectPageAt index: Int)
+    func tp_pageViewController(_ currentViewController: UIViewController?, didBeforeSelectPageAt index: Int)
 }

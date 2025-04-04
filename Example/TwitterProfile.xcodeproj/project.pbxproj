@@ -10,7 +10,6 @@
 		0C3EBCB62311E0CC00648B8C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3EBCB52311E0CC00648B8C /* Colors.swift */; };
 		0C3EBCB82311E35F00648B8C /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3EBCB72311E35F00648B8C /* EmptyViewController.swift */; };
 		0C3EBCBA2311E38A00648B8C /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3EBCB92311E38A00648B8C /* LabelCell.swift */; };
-		0C76B9D1230986460060C09E /* TwitterProfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C76B9D0230986460060C09E /* TwitterProfile.framework */; };
 		0C76B9E723098A110060C09E /* BottomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E223098A110060C09E /* BottomPageViewController.swift */; };
 		0C76B9E823098A110060C09E /* BottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E323098A110060C09E /* BottomViewController.swift */; };
 		0C76B9E923098A110060C09E /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76B9E423098A110060C09E /* HeaderViewController.swift */; };
@@ -40,9 +39,6 @@
 		0C3EBCB52311E0CC00648B8C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0C3EBCB72311E35F00648B8C /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 		0C3EBCB92311E38A00648B8C /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
-		0C61BFE8CF64DFEE8887BCF2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		0C76B9CD23097E980060C09E /* TwitterProfile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TwitterProfile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C76B9D0230986460060C09E /* TwitterProfile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TwitterProfile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C76B9E223098A110060C09E /* BottomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPageViewController.swift; sourceTree = "<group>"; };
 		0C76B9E323098A110060C09E /* BottomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomViewController.swift; sourceTree = "<group>"; };
 		0C76B9E423098A110060C09E /* HeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +46,6 @@
 		0C76B9E623098A110060C09E /* XLPagerTabStripExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLPagerTabStripExampleViewController.swift; sourceTree = "<group>"; };
 		0C7E40DB24842AB5007145E1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		0CC8C9572328081B0061AAB7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		52EB42C1C0FF9B11AB529B9E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* TwitterProfile_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterProfile_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +56,6 @@
 		607FACE51AFB9204008FA782 /* TwitterProfile_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterProfile_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		B239A98947CF79F87E6708ED /* TwitterProfile.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TwitterProfile.podspec; path = ../TwitterProfile.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +63,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C76B9D1230986460060C09E /* TwitterProfile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,8 +101,6 @@
 		34E50E3735B99B56157DCACE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0C76B9D0230986460060C09E /* TwitterProfile.framework */,
-				0C76B9CD23097E980060C09E /* TwitterProfile.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,11 +108,9 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for TwitterProfile */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				A75A54BB48ACE42809B2FA69 /* Pods */,
 				34E50E3735B99B56157DCACE /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -176,23 +165,6 @@
 				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				B239A98947CF79F87E6708ED /* TwitterProfile.podspec */,
-				52EB42C1C0FF9B11AB529B9E /* README.md */,
-				0C61BFE8CF64DFEE8887BCF2 /* LICENSE */,
-			);
-			name = "Podspec Metadata";
-			sourceTree = "<group>";
-		};
-		A75A54BB48ACE42809B2FA69 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

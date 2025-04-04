@@ -22,7 +22,7 @@ To run the example project, clone the repo and run.
 
 TwitterProfile is available through Swift Package Manager.
 
-**Xcode > File > Add Package Dependencies.. :** git@github.com:OfTheWolf/TwitterProfile.git
+**Xcode > File > Add Package Dependencies.. :** https://github.com/OfTheWolf/TwitterProfile.git
 
 ## Author
 

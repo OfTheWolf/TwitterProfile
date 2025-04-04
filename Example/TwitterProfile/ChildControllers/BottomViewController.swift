@@ -30,6 +30,12 @@ class BottomViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("didselect at index \(indexPath.row)")
+        let vc = EmptyViewController()
+        vc.view.backgroundColor = .white
+        navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 

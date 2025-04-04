@@ -17,6 +17,7 @@ public class ContainerViewController : UIViewController, UIScrollViewDelegate {
                 scrollView.panGestureRecognizer.require(toFail: overlayScrollView.panGestureRecognizer)
                 scrollView.donotAdjustContentInset()
                 scrollView.addObserver(self, forKeyPath: #keyPath(UIScrollView.contentSize), options: .new, context: nil)
+                scrollView.addObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset), options: .new, context: nil)
             }
         }
     }
@@ -42,8 +43,11 @@ public class ContainerViewController : UIViewController, UIScrollViewDelegate {
     private var bottomVC: (UIViewController & PagerAwareProtocol)!
 
     private var contentOffsets: [Int: CGFloat] = [:]
-    
-    
+
+    /// This is used to fix the bottom scroll content offset jump when pushing a new view controller onto navigation stack
+    /// This will be hold last offset when pushed (on presenting vc disappear) and reused and reset to nil when popped (on presenting vc appear).
+    private var lastOffsetForBottomScrollBeforePush: CGPoint? = nil
+
     deinit {
         DispatchQueue.main.async { [weak self] in
             self?.removeObservers()
@@ -55,6 +59,7 @@ public class ContainerViewController : UIViewController, UIScrollViewDelegate {
             let (_, value) = arg0
             if let scrollView = value as? UIScrollView {
                 scrollView.removeObserver(self, forKeyPath: #keyPath(UIScrollView.contentSize))
+                scrollView.removeObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset))
             }
         }
     }
@@ -119,12 +124,33 @@ public class ContainerViewController : UIViewController, UIScrollViewDelegate {
         ///let know others scroll view configuration is done
         delegate?.tp_scrollViewDidLoad(overlayScrollView)
     }
-    
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lastOffsetForBottomScrollBeforePush = nil
+    }
+
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if panViews.count > currentIndex, let scroll = panViews[currentIndex] as? UIScrollView {
+            lastOffsetForBottomScrollBeforePush = scroll.contentOffset
+        }
+    }
+
     private func updateOverlayScrollContentSize(with bottomView: UIView){
         self.overlayScrollView.contentSize = getContentSize(for: bottomView)
     }
 
     @MainActor
+    private func freezeBottomContentOffsetWhileNavigating(for bottomScrollView: UIScrollView){
+        guard let lastOffsetForBottomScrollBeforePush else { return }
+        ///Do not remove this line. Otherwise content offset key value observer will trigger indefinitely and cause memory error eventually.
+        let isOffsetChanged = bottomScrollView.contentOffset != lastOffsetForBottomScrollBeforePush
+        if isOffsetChanged {
+            bottomScrollView.contentOffset = lastOffsetForBottomScrollBeforePush
+        }
+    }
+
     private func getContentSize(for bottomView: UIView) -> CGSize{
         if let scroll = bottomView as? UIScrollView{
             let bottomHeight = max(scroll.contentSize.height, self.view.frame.height - dataSource.minHeaderHeight() - pagerTabHeight - bottomInset)
@@ -142,14 +168,16 @@ public class ContainerViewController : UIViewController, UIScrollViewDelegate {
         guard let obj = object as? UIScrollView else { return }
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            if keyPath == #keyPath(UIScrollView.contentSize) {
-                if let scroll = self.panViews[currentIndex] as? UIScrollView, obj == scroll {
+            if let scroll = self.panViews[currentIndex] as? UIScrollView, obj == scroll {
+                if keyPath == #keyPath(UIScrollView.contentSize) {
                     updateOverlayScrollContentSize(with: scroll)
+                } else if keyPath == #keyPath(UIScrollView.contentOffset) {
+                    freezeBottomContentOffsetWhileNavigating(for: scroll)
                 }
             }
         }
     }
-    
+
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         contentOffsets[currentIndex] = scrollView.contentOffset.y
         let topHeight = bottomView.frame.minY - dataSource.minHeaderHeight()

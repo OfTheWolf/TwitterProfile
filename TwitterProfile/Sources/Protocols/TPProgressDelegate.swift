@@ -8,6 +8,7 @@
 
 import UIKit
 
+@MainActor
 public protocol TPProgressDelegate: class{
     func tp_scrollView(_ scrollView: UIScrollView, didUpdate progress: CGFloat)
     func tp_scrollViewDidLoad(_ scrollView: UIScrollView)

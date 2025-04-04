@@ -8,6 +8,7 @@
 
 import UIKit
 
+@MainActor
 public protocol PagerAwareProtocol: class {
     var pageDelegate: BottomPageDelegate? {get set}
     var currentViewController: UIViewController? {get}

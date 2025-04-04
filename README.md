@@ -1,9 +1,9 @@
 # TwitterProfile
 
-[![CI Status](https://img.shields.io/travis/OfTheWolf/TwitterProfile.svg?style=flat)](https://travis-ci.org/OfTheWolf/TwitterProfile)
-[![Version](https://img.shields.io/cocoapods/v/TwitterProfile.svg?style=flat)](https://cocoapods.org/pods/TwitterProfile)
-[![License](https://img.shields.io/cocoapods/l/TwitterProfile.svg?style=flat)](https://cocoapods.org/pods/TwitterProfile)
-[![Platform](https://img.shields.io/cocoapods/p/TwitterProfile.svg?style=flat)](https://cocoapods.org/pods/TwitterProfile)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)
+![Version](https://img.shields.io/github/v/release/OfTheWolf/TwitterProfile?color=blue)
+![Platforms](https://img.shields.io/badge/Platforms-iOS-orange.svg)
 
 Easily create screens like Instagram and Twitter profile. Example project shows Twitter case but you can change header and bottom view controllers easily to mimic instagram or similar UIs. 
 
@@ -14,18 +14,15 @@ Easily create screens like Instagram and Twitter profile. Example project shows 
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo and run.
 
 ## Requirements
 
 ## Installation
 
-TwitterProfile is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+TwitterProfile is available through Swift Package Manager.
 
-```ruby
-pod 'TwitterProfile'
-```
+**Xcode > File > Add Package Dependencies.. :** git@github.com:OfTheWolf/TwitterProfile.git
 
 ## Author
 

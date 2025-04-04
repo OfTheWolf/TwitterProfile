@@ -8,6 +8,7 @@
 
 import UIKit
 
+@MainActor
 public protocol TPDataSource: class {
     func headerViewController() -> UIViewController
     func bottomViewController() -> UIViewController & PagerAwareProtocol

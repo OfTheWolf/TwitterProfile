@@ -9,7 +9,7 @@ Easily create screens like Instagram and Twitter profile. Example project shows 
 
 ## Demo
 
-![Demo](https://github.com/OfTheWolf/TwitterProfile/blob/master/demo.gif)
+![Demo](https://github.com/OfTheWolf/TwitterProfile/blob/main/demo.gif)
 
 
 ## Example

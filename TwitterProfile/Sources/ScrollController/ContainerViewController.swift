@@ -43,6 +43,7 @@ public class ContainerViewController : UIViewController, UIScrollViewDelegate {
     private var bottomVC: (UIViewController & PagerAwareProtocol)!
 
     private var contentOffsets: [Int: CGFloat] = [:]
+    private var panOffsets: [Int: CGFloat] = [:]
 
     /// This is used to fix the bottom scroll content offset jump when pushing a new view controller onto navigation stack
     /// This will be hold last offset when pushed (on presenting vc disappear) and reused and reset to nil when popped (on presenting vc appear).
@@ -168,6 +169,19 @@ public class ContainerViewController : UIViewController, UIScrollViewDelegate {
         guard let obj = object as? UIScrollView else { return }
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
+            let index: Int? = panViews.first(where: {$0.value == obj})?.key
+
+            if let index , let scroll = panViews[index] as? UIScrollView, let panOffset = panOffsets[index]{
+                /// remove observer to prevent infinite calling of observeValue
+                scroll.removeObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset))
+
+                scroll.contentOffset.y = panOffset
+                panOffsets[index] = nil
+
+                /// add observer again
+                scroll.addObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset), options: .new, context: nil)
+            }
+
             if let scroll = self.panViews[currentIndex] as? UIScrollView, obj == scroll {
                 if keyPath == #keyPath(UIScrollView.contentSize) {
                     updateOverlayScrollContentSize(with: scroll)
@@ -191,8 +205,9 @@ public class ContainerViewController : UIViewController, UIScrollViewDelegate {
             contentOffsets.removeAll()
         }else{
             self.containerScrollView.contentOffset.y = topHeight
-            (self.panViews[currentIndex] as? UIScrollView)?.contentOffset.y = scrollView.contentOffset.y - self.containerScrollView.contentOffset.y
-            
+
+            let panOffset = scrollView.contentOffset.y - self.containerScrollView.contentOffset.y
+            (self.panViews[currentIndex] as? UIScrollView)?.contentOffset.y = panOffset
         }
         
         let progress = self.containerScrollView.contentOffset.y / topHeight
@@ -204,6 +219,8 @@ public class ContainerViewController : UIViewController, UIScrollViewDelegate {
 extension ContainerViewController : BottomPageDelegate {
 
     public func tp_pageViewController(_ currentViewController: UIViewController?, didSelectPageAt index: Int) {
+        let prevIndex = currentIndex
+        panOffsets[prevIndex] = (panViews[prevIndex] as? UIScrollView)?.contentOffset.y
         currentIndex = index
 
         if let offset = contentOffsets[index]{
